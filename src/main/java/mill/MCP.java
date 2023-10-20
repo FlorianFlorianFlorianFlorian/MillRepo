@@ -1,9 +1,27 @@
 package mill;
-
 public class MCP {
+    static void printBoard(){
+        System.out.println("X----------X----------X");
+        System.out.println("|          |          |");
+        System.out.println("|   X------X------X   |");
+        System.out.println("|   |      |      |   |");
+        System.out.println("|   |   X--X--X   |   |");
+        System.out.println("|   |   |     |   |   |");
+        System.out.println("X---X---X     X---X---X");
+        System.out.println("|   |   |     |   |   |");
+        System.out.println("|   |   X--X--X   |   |");
+        System.out.println("|   |      |      |   |");
+        System.out.println("|   X------X------X   |");
+        System.out.println("|          |          |");
+        System.out.println("X----------X----------X");
+
+    }
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        System.out.println("and here we go");
-        System.out.println("das ist noch ein Test");
+        System.out.println("Welcome to the Mill Game");
+        System.out.println("Start the Tutorial --> press t");
+        System.out.println("Start a new Game   --> press g");
+
+        //printBoard();
     }
 }
