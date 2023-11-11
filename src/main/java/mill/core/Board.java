@@ -22,4 +22,24 @@ public class Board {
         System.out.println("A6---------A7---------A8");
     }
 
+    /*
+     static void printBoard(){
+        System.out.println("X----------X----------X");
+        System.out.println("|          |          |");
+        System.out.println("|   X------X------X   |");
+        System.out.println("|   |      |      |   |");
+        System.out.println("|   |   X--X--X   |   |");
+        System.out.println("|   |   |     |   |   |");
+        System.out.println("X---X---X     X---X---X");
+        System.out.println("|   |   |     |   |   |");
+        System.out.println("|   |   X--X--X   |   |");
+        System.out.println("|   |      |      |   |");
+        System.out.println("|   X------X------X   |");
+        System.out.println("|          |          |");
+        System.out.println("X----------X----------X");
+
+    }
+
+     */
+
 }
