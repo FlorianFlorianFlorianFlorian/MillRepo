@@ -15,6 +15,9 @@ public class MillController {
         return true;
     }
 
+    public void dostomehting(){
+        //yolo
+    }
     public boolean placeToken(String field) {
         //TODO
         if(!board.getFieldEmpty(field)){

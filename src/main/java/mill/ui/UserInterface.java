@@ -17,6 +17,8 @@ public class UserInterface
 			System.out.println("geht nicht");
 			field = readLine();
 		};
+
+		ctrl.dostomehting();
 	}
 
 	public void getDataFromCtrl2() {
