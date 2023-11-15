@@ -1,6 +1,6 @@
 package mill.core;
 
 public enum Player {
-    ONE,
-    TWO
+    XXX,
+    OOO
 }
