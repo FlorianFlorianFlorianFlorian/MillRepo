@@ -8,6 +8,7 @@ public class Game {
     private Field[] outer;
 
     private Player turn;
+    private int PlaceCounter;
 
     public Game() {
         this.inner = new Field[]{Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY};
@@ -15,13 +16,15 @@ public class Game {
         this.outer = new Field[]{Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY};
 
         this.turn = Player.XXX;
+        this.PlaceCounter = 0;
     }
 
     public boolean placeToken(String placeToBe) {
         // Annahme: nur valide Inputs
+        // maybe implement a timer <= 18
+        // wenn timer ture, dann Spielphase 2
 
         Field token;
-
 
         // welcher Spieler
         if (turn == Player.OOO) {
@@ -52,7 +55,7 @@ public class Game {
 
         int index = location[1] - '1';
         // ASCII magic
-        
+
         if(chooseField[index] != Field.EMPTY){
             return false;
         }
