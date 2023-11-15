@@ -2,7 +2,7 @@ package mill.core;
 
 
 public class MillController {
-
+    /*
     private Board board;
     private Player currentPlayer;
 
@@ -29,6 +29,5 @@ public class MillController {
 
         return true;
     }
-
-
+    */
 }

@@ -1,5 +1,8 @@
 package mill.ui;
 
+import mill.core.Board;
+import mill.core.Field;
+import mill.core.Game;
 import mill.core.MillController;
 
 import java.io.BufferedReader;
@@ -7,19 +10,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class UserInterface 
-{
-	MillController ctrl = new MillController();
+public class UserInterface {
+    private MillController ctrl = new MillController();
+    private Game game = null;
 
-	public void getDataFromCtrl1() {
-		String field = readLine();
-		while(!ctrl.placeToken(field)){
-			System.out.println("geht nicht");
-			field = readLine();
-		};
+    public void placeToken() {
+        String field = readLine();
+        if (game == null) {
+            System.out.println("Spiel hat noch nicht begonnen");
+            return;
+        }
+        // check if valid input
 
-		ctrl.dostomehting();
-	}
+        if (!this.game.placeToken(field)) {
+            System.out.println("Feld kann nicht besetzt werden");
+        }
+        else {
+            this.game.drawBoard();
+        }
+    }
 
     public void getDataFromCtrl2() {
     }

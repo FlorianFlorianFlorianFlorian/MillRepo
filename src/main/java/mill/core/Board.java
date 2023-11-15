@@ -23,25 +23,30 @@ public class Board {
         System.out.printf("%c----------%c----------%c\n", convertField(outer[5]), convertField(outer[6]), convertField(outer[7]));
     }
 
-
-    /*
-     static void printBoard(){
-        System.out.println("X----------X----------X");
-        System.out.println("|          |          |");
-        System.out.println("|   X------X------X   |");
-        System.out.println("|   |      |      |   |");
-        System.out.println("|   |   X--X--X   |   |");
-        System.out.println("|   |   |     |   |   |");
-        System.out.println("X---X---X     X---X---X");
-        System.out.println("|   |   |     |   |   |");
-        System.out.println("|   |   X--X--X   |   |");
-        System.out.println("|   |      |      |   |");
-        System.out.println("|   X------X------X   |");
-        System.out.println("|          |          |");
-        System.out.println("X----------X----------X");
-
+    private static char convertField(Field field) {
+        return switch (field) {
+            case EMPTY -> '_';
+            case WHITE -> 'O';
+            case BLACK -> 'X';
+        };
     }
 
-     */
+
+    public static void printEmptyBoard() {
+        System.out.println("_----------_----------_");
+        System.out.println("|          |          |");
+        System.out.println("|   _------_------_   |");
+        System.out.println("|   |      |      |   |");
+        System.out.println("|   |   _--_--_   |   |");
+        System.out.println("|   |   |     |   |   |");
+        System.out.println("_---_---_     _---_---_");
+        System.out.println("|   |   |     |   |   |");
+        System.out.println("|   |   _--_--_   |   |");
+        System.out.println("|   |      |      |   |");
+        System.out.println("|   _------_------_   |");
+        System.out.println("|          |          |");
+        System.out.println("_----------_----------_");
+
+    }
 
 }
