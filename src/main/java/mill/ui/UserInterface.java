@@ -8,6 +8,7 @@ import mill.core.MillController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Pattern;
 
 
 public class UserInterface {
@@ -16,6 +17,17 @@ public class UserInterface {
 
     public void placeToken() {
         String field = readLine();
+        Pattern mypattern = Pattern.compile("^[ami][1-8]$");
+        // ^ ... das folgende ist der Beginn vom String
+        //[ami] ... dieser Charakter ist entweder 'a', 'm' oder 'i'
+        //[1-8] ... dieser Charakte ist im Interval von 1 bis 8 (sowohal 1 als auch 8 sind inbegriffen)
+        // $ ... der String ist aus - Ende vom String
+
+        if (!mypattern.matcher(field).matches()) {
+            System.out.println("Invalide Eingabe");
+            return;
+        }
+
         if (game == null) {
             System.out.println("Spiel hat noch nicht begonnen");
             return;
@@ -30,7 +42,8 @@ public class UserInterface {
         }
     }
 
-    public void getDataFromCtrl2() {
+    public void moveToken() {
+        String field = readLine();
     }
 
     public void startGame() {
@@ -64,6 +77,7 @@ public class UserInterface {
         menu.insert("t", "Start the Tutorial ", this::startTutorial);
         menu.insert("g", "Start Game", this::startGame);
         menu.insert("p", "Place Token", this::placeToken);
+        menu.insert("m", "Move Token", this::moveToken);
         menu.insert("q", "Quit", null);
         Runnable choice;
         while ((choice = menu.exec()) != null) {
