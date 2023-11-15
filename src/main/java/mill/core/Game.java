@@ -61,6 +61,8 @@ public class Game {
         }
 
         chooseField[index] = token;
+        PlaceCounter++;
+        checkForMills();
         switchPlayer();
         return true;
         // java obj sind immer parse by referenz => also übergeben wir einfach die Speicheradresse und somit ist es direkt in inner/middle/outer gespeichert
@@ -79,5 +81,12 @@ public class Game {
         else {
             turn = Player.XXX;
         }
+    }
+
+
+    public void checkForMills() {
+        // maybe use parameter String previousPlace
+        // check if usefull or not
+
     }
 }
