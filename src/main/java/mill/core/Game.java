@@ -19,6 +19,15 @@ public class Game {
         this.PlaceCounter = 0;
     }
 
+    public String getPlayer(){
+        if(turn == Player.OOO){
+            return "weiß O";
+        }
+        else{
+            return "schwarz X";
+        }
+    }
+
     public boolean placeToken(String placeToBe) {
         // Annahme: nur valide Inputs
         // maybe implement a timer <= 18
@@ -56,13 +65,12 @@ public class Game {
         int index = location[1] - '1';
         // ASCII magic
 
-        if(chooseField[index] != Field.EMPTY){
+        if (chooseField[index] != Field.EMPTY) {
             return false;
         }
 
         chooseField[index] = token;
         PlaceCounter++;
-        checkForMills();
         switchPlayer();
         return true;
         // java obj sind immer parse by referenz => also übergeben wir einfach die Speicheradresse und somit ist es direkt in inner/middle/outer gespeichert
@@ -73,22 +81,34 @@ public class Game {
         Board.drawField(inner, middle, outer);
     }
 
-    private void switchPlayer(){
+    private void switchPlayer() {
         // assume ideal conditions
-        if(turn == Player.XXX){
+        if (turn == Player.XXX) {
             turn = Player.OOO;
-        }
-        else {
+        } else {
             turn = Player.XXX;
         }
     }
 
 
-    public void checkForMills() {
+    public boolean checkForMills() {
         // maybe use parameter String previousPlace
         // check if usefull or not
+        /*
+            EMPTY -> '_';
+            WHITE -> 'O';
+            BLACK -> 'X';
+        */
 
         // work in progress
 
+        // outer array
+        if(outer[6].equals(Field.BLACK) && outer[7].equals(Field.BLACK)){
+            return true;
+        }
+
+
+        return false;
     }
+
 }
