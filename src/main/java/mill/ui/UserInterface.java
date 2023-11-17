@@ -12,10 +12,11 @@ import java.util.regex.Pattern;
 
 
 public class UserInterface {
-    private MillController ctrl = new MillController();
+    //private MillController ctrl = new MillController();
     private Game game = null;
 
     public void placeToken() {
+        System.out.println("Spieler " + this.game.getPlayer() + " ist am Zug:");
         String field = readLine();
         Pattern mypattern = Pattern.compile("^[ami][1-8]$");
         // ^ ... das folgende ist der Beginn vom String
@@ -32,18 +33,25 @@ public class UserInterface {
             System.out.println("Spiel hat noch nicht begonnen");
             return;
         }
-        // check if valid input
-
         if (!this.game.placeToken(field)) {
             System.out.println("Feld kann nicht besetzt werden");
-        }
-        else {
+        } else {
             this.game.drawBoard();
         }
+        arethereanyMills();
     }
 
     public void moveToken() {
         String field = readLine();
+    }
+
+    public void arethereanyMills() {
+        if (this.game.checkForMills()) {
+            System.out.println("Eine Mühle wurde gebaut!");
+        }
+        else {
+            System.out.println("keine Mühle erkannt.");
+        }
     }
 
     public void startGame() {
