@@ -15,7 +15,7 @@ public class Game {
         this.middle = new Field[]{Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY};
         this.outer = new Field[]{Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY};
 
-        this.turn = Player.XXX;
+        this.turn = Player.OOO;
         this.PlaceCounter = 0;
     }
 
