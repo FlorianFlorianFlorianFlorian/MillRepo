@@ -1,7 +1,5 @@
 package mill.core;
 
-import java.util.Arrays;
-
 public class Game {
     private Field[] inner;
     private Field[] middle;
