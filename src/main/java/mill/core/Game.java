@@ -232,4 +232,7 @@ public class Game {
         return false;
     }
 
+    public void removeToken(){
+        System.out.println("were are in public void removeToken. Hello!");
+    }
 }
