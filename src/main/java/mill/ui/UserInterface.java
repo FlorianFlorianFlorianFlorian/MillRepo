@@ -48,10 +48,25 @@ public class UserInterface {
     public void arethereanyMills() {
         if (this.game.checkForMills()) {
             System.out.println("Eine Mühle wurde gebaut!");
+            iliketoremoveremoveit();
         }
         else {
             System.out.println("keine Mühle erkannt.");
         }
+    }
+
+    public void iliketoremoveremoveit(){
+        // select
+        System.out.println("Welches Token soll entfernt werden?");
+        //read
+        String tokentoremove = readLine();
+        // remove
+        if(this.game.removeToken(tokentoremove)){
+            System.out.println("Entfernung erfolgreich");
+        }else{
+            System.out.println("Entfernung fehlgeschlagen");
+        }
+        this.game.drawBoard();
     }
 
     public void startGame() {

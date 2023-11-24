@@ -17,11 +17,10 @@ public class Game {
         this.PlaceCounter = 0;
     }
 
-    public String getPlayer(){
-        if(turn == Player.OOO){
+    public String getPlayer() {
+        if (turn == Player.OOO) {
             return "weiß ('O')";
-        }
-        else{
+        } else {
             return "schwarz ('X')";
         }
     }
@@ -94,7 +93,6 @@ public class Game {
         }
     }
 
-
     public boolean checkForMills() {
         // maybe use parameter String previousPlace
         // check if usefull or not
@@ -113,126 +111,177 @@ public class Game {
         5   6   7               6   7   8
          */
 
+        // TEST "MÜHLE"
+        if (outer[0].equals(Field.WHITE)) {
+            return true;
+        }
+
         // WHITE
         //          OUTER
-        if(outer[0].equals(Field.WHITE) && outer[1].equals(Field.WHITE) && outer[2].equals(Field.WHITE)){
+        if (outer[0].equals(Field.WHITE) && outer[1].equals(Field.WHITE) && outer[2].equals(Field.WHITE)) {
             return true;
         }
-        if(outer[0].equals(Field.WHITE) && outer[3].equals(Field.WHITE) && outer[5].equals(Field.WHITE)){
+        if (outer[0].equals(Field.WHITE) && outer[3].equals(Field.WHITE) && outer[5].equals(Field.WHITE)) {
             return true;
         }
-        if(outer[2].equals(Field.WHITE) && outer[4].equals(Field.WHITE) && outer[8].equals(Field.WHITE)){
+        if (outer[2].equals(Field.WHITE) && outer[4].equals(Field.WHITE) && outer[8].equals(Field.WHITE)) {
             return true;
         }
-        if(outer[5].equals(Field.WHITE) && outer[6].equals(Field.WHITE) && outer[7].equals(Field.WHITE)){
+        if (outer[5].equals(Field.WHITE) && outer[6].equals(Field.WHITE) && outer[7].equals(Field.WHITE)) {
             return true;
         }
 
         //          MIDDLE
-        if(middle[0].equals(Field.WHITE) && middle[1].equals(Field.WHITE) && middle[2].equals(Field.WHITE)){
+        if (middle[0].equals(Field.WHITE) && middle[1].equals(Field.WHITE) && middle[2].equals(Field.WHITE)) {
             return true;
         }
-        if(middle[0].equals(Field.WHITE) && middle[3].equals(Field.WHITE) && middle[5].equals(Field.WHITE)){
+        if (middle[0].equals(Field.WHITE) && middle[3].equals(Field.WHITE) && middle[5].equals(Field.WHITE)) {
             return true;
         }
-        if(middle[2].equals(Field.WHITE) && middle[4].equals(Field.WHITE) && middle[8].equals(Field.WHITE)){
+        if (middle[2].equals(Field.WHITE) && middle[4].equals(Field.WHITE) && middle[8].equals(Field.WHITE)) {
             return true;
         }
-        if(middle[5].equals(Field.WHITE) && middle[6].equals(Field.WHITE) && middle[7].equals(Field.WHITE)){
+        if (middle[5].equals(Field.WHITE) && middle[6].equals(Field.WHITE) && middle[7].equals(Field.WHITE)) {
             return true;
         }
 
         //          INNER
-        if(inner[0].equals(Field.WHITE) && inner[1].equals(Field.WHITE) && inner[2].equals(Field.WHITE)){
+        if (inner[0].equals(Field.WHITE) && inner[1].equals(Field.WHITE) && inner[2].equals(Field.WHITE)) {
             return true;
         }
-        if(inner[0].equals(Field.WHITE) && inner[3].equals(Field.WHITE) && inner[5].equals(Field.WHITE)){
+        if (inner[0].equals(Field.WHITE) && inner[3].equals(Field.WHITE) && inner[5].equals(Field.WHITE)) {
             return true;
         }
-        if(inner[2].equals(Field.WHITE) && inner[4].equals(Field.WHITE) && inner[8].equals(Field.WHITE)){
+        if (inner[2].equals(Field.WHITE) && inner[4].equals(Field.WHITE) && inner[8].equals(Field.WHITE)) {
             return true;
         }
-        if(inner[5].equals(Field.WHITE) && inner[6].equals(Field.WHITE) && inner[7].equals(Field.WHITE)){
+        if (inner[5].equals(Field.WHITE) && inner[6].equals(Field.WHITE) && inner[7].equals(Field.WHITE)) {
             return true;
         }
         // DIAGONALEN
-        if(outer[1].equals(Field.WHITE) && middle[1].equals(Field.WHITE) && inner[1].equals(Field.WHITE)){
+        if (outer[1].equals(Field.WHITE) && middle[1].equals(Field.WHITE) && inner[1].equals(Field.WHITE)) {
             return true;
         }
-        if(outer[3].equals(Field.WHITE) && middle[3].equals(Field.WHITE) && inner[3].equals(Field.WHITE)){
+        if (outer[3].equals(Field.WHITE) && middle[3].equals(Field.WHITE) && inner[3].equals(Field.WHITE)) {
             return true;
         }
-        if(outer[4].equals(Field.WHITE) && middle[4].equals(Field.WHITE) && inner[4].equals(Field.WHITE)){
+        if (outer[4].equals(Field.WHITE) && middle[4].equals(Field.WHITE) && inner[4].equals(Field.WHITE)) {
             return true;
         }
-        if(outer[6].equals(Field.WHITE) && middle[6].equals(Field.WHITE) && inner[6].equals(Field.WHITE)){
+        if (outer[6].equals(Field.WHITE) && middle[6].equals(Field.WHITE) && inner[6].equals(Field.WHITE)) {
             return true;
         }
 
         // BLACK
         //          OUTER
-        if(outer[0].equals(Field.BLACK) && outer[1].equals(Field.BLACK) && outer[2].equals(Field.BLACK)){
+        if (outer[0].equals(Field.BLACK) && outer[1].equals(Field.BLACK) && outer[2].equals(Field.BLACK)) {
             return true;
         }
-        if(outer[0].equals(Field.BLACK) && outer[3].equals(Field.BLACK) && outer[5].equals(Field.BLACK)){
+        if (outer[0].equals(Field.BLACK) && outer[3].equals(Field.BLACK) && outer[5].equals(Field.BLACK)) {
             return true;
         }
-        if(outer[2].equals(Field.BLACK) && outer[4].equals(Field.BLACK) && outer[8].equals(Field.BLACK)){
+        if (outer[2].equals(Field.BLACK) && outer[4].equals(Field.BLACK) && outer[8].equals(Field.BLACK)) {
             return true;
         }
-        if(outer[5].equals(Field.BLACK) && outer[6].equals(Field.BLACK) && outer[7].equals(Field.BLACK)){
+        if (outer[5].equals(Field.BLACK) && outer[6].equals(Field.BLACK) && outer[7].equals(Field.BLACK)) {
             return true;
         }
 
         //          MIDDLE
-        if(middle[0].equals(Field.BLACK) && middle[1].equals(Field.BLACK) && middle[2].equals(Field.BLACK)){
+        if (middle[0].equals(Field.BLACK) && middle[1].equals(Field.BLACK) && middle[2].equals(Field.BLACK)) {
             return true;
         }
-        if(middle[0].equals(Field.BLACK) && middle[3].equals(Field.BLACK) && middle[5].equals(Field.BLACK)){
+        if (middle[0].equals(Field.BLACK) && middle[3].equals(Field.BLACK) && middle[5].equals(Field.BLACK)) {
             return true;
         }
-        if(middle[2].equals(Field.BLACK) && middle[4].equals(Field.BLACK) && middle[8].equals(Field.BLACK)){
+        if (middle[2].equals(Field.BLACK) && middle[4].equals(Field.BLACK) && middle[8].equals(Field.BLACK)) {
             return true;
         }
-        if(middle[5].equals(Field.BLACK) && middle[6].equals(Field.BLACK) && middle[7].equals(Field.BLACK)){
+        if (middle[5].equals(Field.BLACK) && middle[6].equals(Field.BLACK) && middle[7].equals(Field.BLACK)) {
             return true;
         }
 
         //          INNER
-        if(inner[0].equals(Field.BLACK) && inner[1].equals(Field.BLACK) && inner[2].equals(Field.BLACK)){
+        if (inner[0].equals(Field.BLACK) && inner[1].equals(Field.BLACK) && inner[2].equals(Field.BLACK)) {
             return true;
         }
-        if(inner[0].equals(Field.BLACK) && inner[3].equals(Field.BLACK) && inner[5].equals(Field.BLACK)){
+        if (inner[0].equals(Field.BLACK) && inner[3].equals(Field.BLACK) && inner[5].equals(Field.BLACK)) {
             return true;
         }
-        if(inner[2].equals(Field.BLACK) && inner[4].equals(Field.BLACK) && inner[8].equals(Field.BLACK)){
+        if (inner[2].equals(Field.BLACK) && inner[4].equals(Field.BLACK) && inner[8].equals(Field.BLACK)) {
             return true;
         }
-        if(inner[5].equals(Field.BLACK) && inner[6].equals(Field.BLACK) && inner[7].equals(Field.BLACK)){
+        if (inner[5].equals(Field.BLACK) && inner[6].equals(Field.BLACK) && inner[7].equals(Field.BLACK)) {
             return true;
         }
 
         // DIAGONAEL
-        if(outer[1].equals(Field.BLACK) && middle[1].equals(Field.BLACK) && inner[1].equals(Field.BLACK)){
+        if (outer[1].equals(Field.BLACK) && middle[1].equals(Field.BLACK) && inner[1].equals(Field.BLACK)) {
             return true;
         }
-        if(outer[3].equals(Field.BLACK) && middle[3].equals(Field.BLACK) && inner[3].equals(Field.BLACK)){
+        if (outer[3].equals(Field.BLACK) && middle[3].equals(Field.BLACK) && inner[3].equals(Field.BLACK)) {
             return true;
         }
-        if(outer[4].equals(Field.BLACK) && middle[4].equals(Field.BLACK) && inner[4].equals(Field.BLACK)){
+        if (outer[4].equals(Field.BLACK) && middle[4].equals(Field.BLACK) && inner[4].equals(Field.BLACK)) {
             return true;
         }
-        if(outer[6].equals(Field.BLACK) && middle[6].equals(Field.BLACK) && inner[6].equals(Field.BLACK)){
+        if (outer[6].equals(Field.BLACK) && middle[6].equals(Field.BLACK) && inner[6].equals(Field.BLACK)) {
             return true;
         }
-
-
 
 
         return false;
     }
 
-    public void removeToken(){
-        System.out.println("were are in public void removeToken. Hello!");
+    public boolean removeToken(String PlacetoRemove) {
+        // Welcher Token gehört entfernt?
+        // SwitchPlacer wird nach placetoken aufgerufen, somit ist zu diesem Zeitpunkt der aktuelle Spieler bereits der, der als nächstes legt == das Token, das es zu entfernen liegt
+        Field tokenToRemove;
+        if (turn == Player.OOO) {
+            tokenToRemove = Field.WHITE;
+        } else {
+            tokenToRemove = Field.BLACK;
+        }
+        // to do: refactor this code above, because it is also used in placeToken()
+
+
+        // wo soll entfernt werden?
+        char[] location = PlacetoRemove.toCharArray();
+        Field[] chooseField = null;
+
+        switch (location[0]) {
+            case 'i': {
+                chooseField = inner;
+                break;
+            }
+            case 'm': {
+                chooseField = middle;
+                break;
+            }
+            case 'a': {
+                chooseField = outer;
+                break;
+            }
+        }
+        int index = location[1] - '1';
+        // to do: also refactor this, because is is also used in placeToken()
+
+        // kann hier entfernt werden?
+
+        // entfernen
+        if(chooseField[index] == tokenToRemove) {
+            if (chooseField == outer) {
+                outer[index] = Field.EMPTY;
+            } else if (chooseField == middle) {
+                middle[index] = Field.EMPTY;
+            } else if (chooseField == inner) {
+                inner[index] = Field.EMPTY;
+            }
+            return true;
+        }
+
+        // Kontrolle?
+
+        return false;
     }
 }
