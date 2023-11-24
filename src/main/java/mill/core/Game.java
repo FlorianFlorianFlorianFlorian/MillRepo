@@ -112,9 +112,9 @@ public class Game {
          */
 
         // TEST "MÜHLE"
-        if (outer[0].equals(Field.WHITE)) {
+        /* if (outer[0].equals(Field.WHITE)) {
             return true;
-        }
+        } */
 
         // WHITE
         //          OUTER
