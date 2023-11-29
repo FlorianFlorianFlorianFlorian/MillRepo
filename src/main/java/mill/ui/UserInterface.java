@@ -42,7 +42,18 @@ public class UserInterface {
     }
 
     public void moveToken() {
-        String field = readLine();
+        String startField;
+        String goalField;
+        System.out.println("Welcher Token soll bewegt werden?");
+        startField = readLine();
+        System.out.println("Wohin soll der Token bewegt werden?");
+        goalField = readLine();
+
+        if(this.game.moveToken(startField, goalField)){
+            this.game.drawBoard();
+        }else{
+            System.out.println("Unable to move the Token");
+        }
     }
 
     public void arethereanyMills() {

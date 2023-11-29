@@ -109,8 +109,6 @@ public class Game {
         }
     }
 
-
-
     public boolean checkForMills() {
 
         Field[] fieldColor = {Field.WHITE, Field.BLACK};
@@ -152,7 +150,6 @@ public class Game {
         }
         // to do: refactor this code above, because it is also used in placeToken()
 
-
         // wo soll entfernt werden?
         char[] location = PlacetoRemove.toCharArray();
         Field[] chooseField = null;
@@ -190,6 +187,10 @@ public class Game {
 
         // Kontrolle?
 
+        return false;
+    }
+
+    public boolean moveToken(String Start, String Goal){
         return false;
     }
 }
