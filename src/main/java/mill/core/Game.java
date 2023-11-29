@@ -47,7 +47,7 @@ public class Game {
 
         Field token;
         // welcher Spieler
-        if (turn == Player.OOO) {
+        if (getPlayer()) {
             token = Field.WHITE;
         } else {
             token = Field.BLACK;
@@ -57,21 +57,7 @@ public class Game {
         // = placeToBe
         char[] location = placeToBe.toCharArray();
 
-        Field[] chooseField = null;
-        switch (location[0]) {
-            case 'i': {
-                chooseField = inner;
-                break;
-            }
-            case 'm': {
-                chooseField = middle;
-                break;
-            }
-            case 'a': {
-                chooseField = outer;
-                break;
-            }
-        }
+        Field[] chooseField = getChosenField(location[0]);
 
         int index = location[1] - '1';
         // ASCII magic
@@ -79,12 +65,6 @@ public class Game {
         if (chooseField[index] != Field.EMPTY) {
             return false;
         }
-
-        /*
-        Bug Report:
-        when wanting to place a token at a6 it is placed to a5 put it is shown at a6 and m6.
-        check out why!
-         */
 
         chooseField[index] = token;
         PlaceCounter++;
@@ -146,26 +126,11 @@ public class Game {
         } else {
             tokenToRemove = Field.BLACK;
         }
-        // to do: refactor this code above, because it is also used in placeToken()
 
         // wo soll entfernt werden?
         char[] location = PlacetoRemove.toCharArray();
-        Field[] chooseField = null;
+        Field[] chooseField = getChosenField(location[0]);
 
-        switch (location[0]) {
-            case 'i': {
-                chooseField = inner;
-                break;
-            }
-            case 'm': {
-                chooseField = middle;
-                break;
-            }
-            case 'a': {
-                chooseField = outer;
-                break;
-            }
-        }
         int index = location[1] - '1';
         // to do: also refactor this, because is is also used in placeToken()
 
@@ -188,6 +153,27 @@ public class Game {
         return false;
     }
 
+    private Field[] getChosenField(char thelocation){
+        Field[] theChosenField = null;
+
+        switch (thelocation){
+            case 'i': {
+                theChosenField = inner;
+                break;
+            }
+            case 'm': {
+                theChosenField = middle;
+                break;
+            }
+            case 'a': {
+                theChosenField = outer;
+                break;
+            }
+        }
+
+        return theChosenField;
+    }
+
     public int moveToken(String Start, String Goal){
         // wurde ein richtiger Token ausgewählt?
 
@@ -199,6 +185,7 @@ public class Game {
         // 9 = error unknown
 
         // current player?
+        getPlayer();
         return 9;
     }
 }
