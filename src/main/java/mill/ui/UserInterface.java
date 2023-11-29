@@ -51,6 +51,10 @@ public class UserInterface {
         String goalField;
         System.out.println("Welcher Token soll bewegt werden?");
         startField = readLine();
+        if(!this.game.checkIfValidTokenToMove(startField)){
+            System.out.println("Ungültiges Feld zum Bewegen");
+            return;
+        }
         System.out.println("Wohin soll der Token bewegt werden?");
         goalField = readLine();
 
