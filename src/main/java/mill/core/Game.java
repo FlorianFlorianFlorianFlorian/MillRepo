@@ -31,12 +31,10 @@ public class Game {
         this.middle = middle;
     }
 
-    public String getPlayer() {
-        if (turn == Player.OOO) {
-            return "weiß ('O')";
-        } else {
-            return "schwarz ('X')";
-        }
+    public boolean getPlayer() {
+        return turn == Player.OOO;
+        //returns true if Player == 000 == white
+        // returns false if Player == XXX == black
     }
 
     public boolean placeToken(String placeToBe) {

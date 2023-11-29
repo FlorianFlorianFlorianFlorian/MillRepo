@@ -16,7 +16,12 @@ public class UserInterface {
     private Game game = null;
 
     public void placeToken() {
-        System.out.println("Spieler " + this.game.getPlayer() + " ist am Zug:");
+        if(this.game.getPlayer()){
+            System.out.println("Spieler weiß ('O') ist am Zug:");
+        }else{
+            System.out.println("Spieler schwarz ('X') ist am Zug:");
+        }
+
         String field = readLine();
         Pattern mypattern = Pattern.compile("^[ami][1-8]$");
         // ^ ... das folgende ist der Beginn vom String
@@ -49,7 +54,7 @@ public class UserInterface {
         System.out.println("Wohin soll der Token bewegt werden?");
         goalField = readLine();
 
-        if(this.game.moveToken(startField, goalField)){
+        if(this.game.moveToken(startField, goalField) == 0){
             this.game.drawBoard();
         }else{
             System.out.println("Unable to move the Token");
