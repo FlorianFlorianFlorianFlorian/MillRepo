@@ -186,15 +186,151 @@ public class Game {
         // 3 = cannot be moved, no empty fields nearby
         // 9 = error unknown
 
+        // start ist valid
+        int wohinSollIchMichWenden = 0;
 
-        // current player?
-        getPlayer();
+        // Welcher Kreis?
+        char[] startLocation = start.toCharArray();
+        char[] goalLocation = goal.toCharArray();
+        Field currentPlayersToken;
+
+        Field[] startCircle = getChosenCircle(startLocation[0]);
+        Field[] goalCircle = getChosenCircle(goalLocation[0]);
+        int startIndex = startLocation[1] - '1';
+        int goalIndex = goalLocation[1] - '1';
+
+
+        currentPlayersToken = getPlayersToken(getPlayer());
+
+
+
+        // move right
+        if(startIndex == goalIndex - 1){
+            if(startCircle == outer){
+                outer[startIndex] = Field.EMPTY;
+                outer[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }else if (startCircle == middle){
+                middle[startIndex] = Field.EMPTY;
+                middle[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }else if (startCircle == inner){
+                inner[startIndex] = Field.EMPTY;
+                inner[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }
+            /*
+            * Zeilenhüpfen ist möglich!
+            * fix later
+            * */
+        }
+
+        // move left
+        if(startIndex - 1 == goalIndex){
+            if(startCircle == outer){
+                outer[startIndex] = Field.EMPTY;
+                outer[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }else if (startCircle == middle){
+                middle[startIndex] = Field.EMPTY;
+                middle[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }else if (startCircle == inner){
+                inner[startIndex] = Field.EMPTY;
+                inner[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }
+            /*
+             * Zeilenhüpfen ist möglich!
+             * fix later
+             * */
+        }
+
+        // move down (first to second row)
+        if(startIndex == goalIndex - 3){
+            if(startCircle == outer){
+                outer[startIndex] = Field.EMPTY;
+                outer[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }else if (startCircle == middle){
+                middle[startIndex] = Field.EMPTY;
+                middle[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }else if (startCircle == inner){
+                inner[startIndex] = Field.EMPTY;
+                inner[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }
+        }
+
+        // move down (second to third row)
+        if(startIndex == goalIndex - 2){
+            if(startCircle == outer){
+                outer[startIndex] = Field.EMPTY;
+                outer[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }else if (startCircle == middle){
+                middle[startIndex] = Field.EMPTY;
+                middle[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }else if (startCircle == inner){
+                inner[startIndex] = Field.EMPTY;
+                inner[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }
+        }
+
+        // von außen nach mitte
+        if (startIndex == goalIndex){
+            if(startCircle == outer && goalCircle == middle){
+                outer[startIndex] = Field.EMPTY;
+                middle[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }
+            else if(startCircle == middle && goalCircle == inner){
+                middle[startIndex] = Field.EMPTY;
+                inner[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }
+            else if (startCircle == inner && goalCircle == middle){
+                inner[startIndex] = Field.EMPTY;
+                middle[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }
+            else if(startCircle == middle && goalCircle == outer){
+                middle[startIndex] = Field.EMPTY;
+                outer[goalIndex] = currentPlayersToken;
+                switchPlayer();
+                return 0;
+            }
+        }
+
+
         return 9;
     }
 
     public boolean checkIfValidTokenToMove(String start) {
         // wenn start Feld Token = aktueller Spieler ist => true
         // sonst false
+
+        if (start == null){
+            return false;
+        }
 
         char[] location = start.toCharArray();
         Field currentPlayersToken;
@@ -204,12 +340,7 @@ public class Game {
         // getPlayer        ...    boolean (true = white; false = black)
         // chosenField[index] ...
 
-        if (getPlayer()) {
-            currentPlayersToken = Field.WHITE;
-        } else {
-            currentPlayersToken = Field.BLACK;
-        }
-        // Was mach ich, wenn es EMPTY ist?!
+        currentPlayersToken = getPlayersToken(getPlayer());
 
         if (chosenCircle == outer && outer[index] == currentPlayersToken) {
             return true;
@@ -222,6 +353,13 @@ public class Game {
         }
     }
 
+    private Field getPlayersToken(boolean player){
+        if(player){
+            return Field.WHITE;
+        }else {
+            return Field.BLACK;
+        }
+    }
 
 
     /*
