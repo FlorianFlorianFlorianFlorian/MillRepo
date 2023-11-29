@@ -190,7 +190,17 @@ public class Game {
         return false;
     }
 
-    public boolean moveToken(String Start, String Goal){
-        return false;
+    public int moveToken(String Start, String Goal){
+        // wurde ein richtiger Token ausgewählt?
+
+        // mag ich hier so art Returncodes verwenden?
+        // 0 = successfull
+        // 1 = cannot be moved, empty Field
+        // 2 = cannot be moved, opponents Field
+        // 3 = cannot be moved, no empty fields nearby
+        // 9 = error unknown
+
+        // current player?
+        return 9;
     }
 }
