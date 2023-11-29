@@ -40,12 +40,14 @@ public class Game {
     }
 
     public boolean placeToken(String placeToBe) {
-        // Annahme: nur valide Inputs
-        // maybe implement a timer <= 18
-        // wenn timer ture, dann Spielphase 2
+        if (PlaceCounter >= 18){
+            return false;
+            // To Do:
+            // Fehlercodes einbauen, um am UserInterface anzeigen zu können was los ist.
+            // derzeit nur eine Fehlerbehandlung => für zu viele Tokens derzeit ungeeignet.
+        }
 
         Field token;
-
         // welcher Spieler
         if (turn == Player.OOO) {
             token = Field.WHITE;

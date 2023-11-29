@@ -34,7 +34,7 @@ public class UserInterface {
             return;
         }
         if (!this.game.placeToken(field)) {
-            System.out.println("Feld kann nicht besetzt werden");
+            System.out.println("Feld kann nicht besetzt werden ODER zu viele Tokens bereits gesetzt");
         } else {
             this.game.drawBoard();
         }
