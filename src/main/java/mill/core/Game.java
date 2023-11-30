@@ -38,6 +38,8 @@ public class Game {
     }
 
     public boolean placeToken(String placeToBe) {
+        //TODO: find the Bug
+
         if (PlaceCounter >= 18) {
             return false;
             // To Do:
@@ -487,11 +489,6 @@ public class Game {
             }
         }
         return 9;
-    }
-
-    private void switchTokens(Field[] circle, int theStartIndex, int theGoalIndex, Field token){
-        circle[theStartIndex] = Field.EMPTY;
-        circle[theGoalIndex] = token;
     }
 
     public boolean checkIfValidTokenToMove(String start) {
