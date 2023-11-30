@@ -18,7 +18,7 @@ public class Board {
         System.out.println("|   |   |     |   |   |");
         System.out.printf("|   |   %c--%c--%c   |   |\n", convertField(inner[5]), convertField(inner[6]), convertField(inner[7]));
         System.out.println("|   |      |      |   |");
-        System.out.printf("|   %c------%c------%c   |\n", convertField(outer[5]), convertField(inner[6]), convertField(inner[7]));
+        System.out.printf("|   %c------%c------%c   |\n", convertField(middle[5]), convertField(middle[6]), convertField(middle[7]));
         System.out.println("|          |          |");
         System.out.printf("%c----------%c----------%c\n", convertField(outer[5]), convertField(outer[6]), convertField(outer[7]));
     }

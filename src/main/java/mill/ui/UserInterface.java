@@ -1,9 +1,6 @@
 package mill.ui;
 
-import mill.core.Board;
-import mill.core.Field;
 import mill.core.Game;
-import mill.core.MillController;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +28,6 @@ public class UserInterface {
         }else{
             System.out.println("Spieler schwarz ('X') ist am Zug:");
         }
-
         String field = readLine();
 
         if (!mypattern.matcher(field).matches()) {
@@ -39,11 +35,12 @@ public class UserInterface {
             return;
         }
 
-        if (!this.game.placeToken(field)) {
-            System.out.println("Feld kann nicht besetzt werden ODER zu viele Tokens bereits gesetzt");
-        } else {
+        if (this.game.placeToken(field)) {
             this.game.drawBoard();
+        } else {
+            System.out.println("Feld kann nicht besetzt werden ODER zu viele Tokens bereits gesetzt");
         }
+
         arethereanyMills();
     }
 
@@ -159,29 +156,8 @@ public class UserInterface {
         try {
             value = inReader.readLine();
         } catch (IOException e) {
+            System.out.println("There was a problem");
         }
         return value.trim();
-    }
-
-    protected Double readDouble(int lowerlimit, int upperlimit) {
-        Double number = null;
-        while (number == null) {
-            String str = this.readLine();
-            try {
-                number = Double.parseDouble(str);
-            } catch (NumberFormatException e) {
-                number = null;
-                System.out.println("Please enter a valid number:");
-                continue;
-            }
-            if (number < lowerlimit) {
-                System.out.println("Please enter a higher number:");
-                number = null;
-            } else if (number > upperlimit) {
-                System.out.println("Please enter a lower number:");
-                number = null;
-            }
-        }
-        return number;
     }
 }
