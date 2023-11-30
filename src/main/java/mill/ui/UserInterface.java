@@ -21,6 +21,11 @@ public class UserInterface {
     // $ ... der String ist aus - Ende vom String
 
     public void placeToken() {
+        if (game == null) {
+            System.out.println("Spiel hat noch nicht begonnen");
+            return;
+        }
+
         if(this.game.getPlayer()){
             System.out.println("Spieler weiß ('O') ist am Zug:");
         }else{
@@ -34,10 +39,6 @@ public class UserInterface {
             return;
         }
 
-        if (game == null) {
-            System.out.println("Spiel hat noch nicht begonnen");
-            return;
-        }
         if (!this.game.placeToken(field)) {
             System.out.println("Feld kann nicht besetzt werden ODER zu viele Tokens bereits gesetzt");
         } else {
