@@ -1,6 +1,5 @@
 package mill.core;
 
-import java.util.Arrays;
 
 public class Game {
     private Field[] inner;
@@ -53,20 +52,18 @@ public class Game {
             token = Field.BLACK;
         }
 
-        // Wohin?
-        // = placeToBe
+        // Wohin? = placeToBe
         char[] location = placeToBe.toCharArray();
-
-        Field[] chooseField = getChosenCircle(location[0]);
+        Field[] choosenCircle = getChosenCircle(location[0]);
 
         int index = location[1] - '1';
         // ASCII magic
 
-        if (chooseField[index] != Field.EMPTY) {
+        if (choosenCircle[index] != Field.EMPTY) {
             return false;
         }
 
-        chooseField[index] = token;
+        choosenCircle[index] = token;
         PlaceCounter++;
         switchPlayer();
         return true;
@@ -487,11 +484,6 @@ public class Game {
             }
         }
         return 9;
-    }
-
-    private void switchTokens(Field[] circle, int theStartIndex, int theGoalIndex, Field token){
-        circle[theStartIndex] = Field.EMPTY;
-        circle[theGoalIndex] = token;
     }
 
     public boolean checkIfValidTokenToMove(String start) {
