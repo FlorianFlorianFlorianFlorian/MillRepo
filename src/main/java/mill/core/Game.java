@@ -181,13 +181,13 @@ public class Game {
 
         // mag ich hier so art Returncodes verwenden?
         // 0 = successfull
-        // 1 = cannot be moved, empty Field
-        // 2 = cannot be moved, opponents Field
-        // 3 = cannot be moved, no empty fields nearby
+        // 1 = cannot be moved, start field is empty
+        // 2 = cannot be moved, opponents Field (not your token)
+        // 3 = cannot be moved, goal Field is not empty
+        // 4 = cannot be moved, not connected (to far away)
         // 9 = error unknown
 
         // start ist valid
-        int wohinSollIchMichWenden = 0;
 
         // Welcher Kreis?
         char[] startLocation = start.toCharArray();
@@ -199,136 +199,306 @@ public class Game {
         int startIndex = startLocation[1] - '1';
         int goalIndex = goalLocation[1] - '1';
 
-
         currentPlayersToken = getPlayersToken(getPlayer());
 
+        if (startCircle[startIndex] == Field.EMPTY){return 1;}
+        if(goalCircle[goalIndex] != Field.EMPTY){ return 3; }
+        if(startCircle == outer && goalCircle == inner){return 4;}
+        if(startCircle == inner && goalCircle == outer){return 4;}
 
-
-        // move right
-        if(startIndex == goalIndex - 1){
+        // Movements within the same circle
+        // ACHTUNG: hier muss man Indizes verwenden, also nicht wie bei da Eingabe!
+        if(startCircle == goalCircle){
             if(startCircle == outer){
+                if(startIndex == 0){
+                    if(goalIndex == 1){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 3){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 1){
+                    if(goalIndex == 0){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 2){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 2){
+                    if(goalIndex == 1){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 4){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 3){
+                    if(goalIndex == 0){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 5){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 4){
+                    if(goalIndex == 2){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 7){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 5){
+                    if(goalIndex == 3){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 6){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 6){
+                    if(goalIndex == 5){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 7){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 7){
+                    if(goalIndex == 4){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 6){
+                        outer[startIndex] = Field.EMPTY;
+                        outer[goalIndex] = currentPlayersToken;
+                    }
+                }
+
+            }
+
+            if(startCircle == middle){
+                if(startIndex == 0){
+                    if(goalIndex == 1){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 3){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 1){
+                    if(goalIndex == 0){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 2){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 2){
+                    if(goalIndex == 1){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 4){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 3){
+                    if(goalIndex == 0){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 5){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 4){
+                    if(goalIndex == 2){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 7){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 5){
+                    if(goalIndex == 3){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 6){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 6){
+                    if(goalIndex == 5){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 7){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 7){
+                    if(goalIndex == 4){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 6){
+                        middle[startIndex] = Field.EMPTY;
+                        middle[goalIndex] = currentPlayersToken;
+                    }
+                }
+            }
+            if(startCircle == inner){
+                if(startIndex == 0){
+                    if(goalIndex == 1){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 3){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 1){
+                    if(goalIndex == 0){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 2){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 2){
+                    if(goalIndex == 1){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 4){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 3){
+                    if(goalIndex == 0){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 5){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 4){
+                    if(goalIndex == 2){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 7){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 5){
+                    if(goalIndex == 3){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 6){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 6){
+                    if(goalIndex == 5){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 7){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                }
+                else if(startIndex == 7){
+                    if(goalIndex == 4){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                    else if(goalIndex == 6){
+                        inner[startIndex] = Field.EMPTY;
+                        inner[goalIndex] = currentPlayersToken;
+                    }
+                }
+
+            }
+            switchPlayer();
+            return 0;
+        }
+
+        // between circles
+        if (startIndex == goalIndex) {
+            if (startCircle == outer && goalCircle == middle) {
                 outer[startIndex] = Field.EMPTY;
-                outer[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }else if (startCircle == middle){
-                middle[startIndex] = Field.EMPTY;
                 middle[goalIndex] = currentPlayersToken;
                 switchPlayer();
                 return 0;
-            }else if (startCircle == inner){
-                inner[startIndex] = Field.EMPTY;
+            } else if (startCircle == middle && goalCircle == inner) {
+                middle[startIndex] = Field.EMPTY;
                 inner[goalIndex] = currentPlayersToken;
                 switchPlayer();
                 return 0;
-            }
-            /*
-            * Zeilenhüpfen ist möglich!
-            * fix later
-            * */
-        }
-
-        // move left
-        if(startIndex - 1 == goalIndex){
-            if(startCircle == outer){
-                outer[startIndex] = Field.EMPTY;
-                outer[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }else if (startCircle == middle){
-                middle[startIndex] = Field.EMPTY;
-                middle[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }else if (startCircle == inner){
-                inner[startIndex] = Field.EMPTY;
-                inner[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }
-            /*
-             * Zeilenhüpfen ist möglich!
-             * fix later
-             * */
-        }
-
-        // move down (first to second row)
-        if(startIndex == goalIndex - 3){
-            if(startCircle == outer){
-                outer[startIndex] = Field.EMPTY;
-                outer[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }else if (startCircle == middle){
-                middle[startIndex] = Field.EMPTY;
-                middle[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }else if (startCircle == inner){
-                inner[startIndex] = Field.EMPTY;
-                inner[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }
-        }
-
-        // move down (second to third row)
-        if(startIndex == goalIndex - 2){
-            if(startCircle == outer){
-                outer[startIndex] = Field.EMPTY;
-                outer[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }else if (startCircle == middle){
-                middle[startIndex] = Field.EMPTY;
-                middle[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }else if (startCircle == inner){
-                inner[startIndex] = Field.EMPTY;
-                inner[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }
-        }
-
-        // von außen nach mitte
-        if (startIndex == goalIndex){
-            if(startCircle == outer && goalCircle == middle){
-                outer[startIndex] = Field.EMPTY;
-                middle[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }
-            else if(startCircle == middle && goalCircle == inner){
-                middle[startIndex] = Field.EMPTY;
-                inner[goalIndex] = currentPlayersToken;
-                switchPlayer();
-                return 0;
-            }
-            else if (startCircle == inner && goalCircle == middle){
+            } else if (startCircle == inner && goalCircle == middle) {
                 inner[startIndex] = Field.EMPTY;
                 middle[goalIndex] = currentPlayersToken;
                 switchPlayer();
                 return 0;
-            }
-            else if(startCircle == middle && goalCircle == outer){
+            } else if (startCircle == middle && goalCircle == outer) {
                 middle[startIndex] = Field.EMPTY;
                 outer[goalIndex] = currentPlayersToken;
                 switchPlayer();
                 return 0;
             }
         }
-
-
         return 9;
+    }
+
+    private void switchTokens(Field[] circle, int theStartIndex, int theGoalIndex, Field token){
+        circle[theStartIndex] = Field.EMPTY;
+        circle[theGoalIndex] = token;
     }
 
     public boolean checkIfValidTokenToMove(String start) {
         // wenn start Feld Token = aktueller Spieler ist => true
         // sonst false
 
-        if (start == null){
+        if (start == null) {
             return false;
         }
 
@@ -348,27 +518,18 @@ public class Game {
             return true;
         } else if (chosenCircle == inner && inner[index] == currentPlayersToken) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    private Field getPlayersToken(boolean player){
-        if(player){
+    private Field getPlayersToken(boolean player) {
+        if (player) {
             return Field.WHITE;
-        }else {
+        } else {
             return Field.BLACK;
         }
     }
 
 
-    /*
-
-    private Field checkField(char circle, int index) throws Exception {
-        if (circle == null) throw new Exception("unclear");
-
-
-    }
-
-     */
 }

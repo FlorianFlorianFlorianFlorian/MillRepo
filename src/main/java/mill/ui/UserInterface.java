@@ -78,7 +78,12 @@ public class UserInterface {
         }
         if(this.game.moveToken(startField, goalField) == 0){
             this.game.drawBoard();
-        }else{
+        } else if (this.game.moveToken(startField, goalField) == 3) {
+            System.out.println("Das Zielfeld ist nicht leer. Ungültige Eingabe.");
+        } else if (this.game.moveToken(startField, goalField) == 4) {
+            System.out.println("Das Zielfeld ist zu weit weg. Ungültige Eingabe.");
+        }
+        else{
             System.out.println("Unable to move the Token");
         }
     }
