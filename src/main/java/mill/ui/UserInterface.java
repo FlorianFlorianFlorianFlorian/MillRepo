@@ -14,15 +14,20 @@ import java.util.regex.Pattern;
 public class UserInterface {
     //private MillController ctrl = new MillController();
     private Game game = null;
+    Pattern mypattern = Pattern.compile("^[ami][1-8]$");
+    // ^ ... das folgende ist der Beginn vom String
+    //[ami] ... dieser Charakter ist entweder 'a', 'm' oder 'i'
+    //[1-8] ... dieser Charakte ist im Interval von 1 bis 8 (sowohal 1 als auch 8 sind inbegriffen)
+    // $ ... der String ist aus - Ende vom String
 
     public void placeToken() {
-        System.out.println("Spieler " + this.game.getPlayer() + " ist am Zug:");
+        if(this.game.getPlayer()){
+            System.out.println("Spieler weiß ('O') ist am Zug:");
+        }else{
+            System.out.println("Spieler schwarz ('X') ist am Zug:");
+        }
+
         String field = readLine();
-        Pattern mypattern = Pattern.compile("^[ami][1-8]$");
-        // ^ ... das folgende ist der Beginn vom String
-        //[ami] ... dieser Charakter ist entweder 'a', 'm' oder 'i'
-        //[1-8] ... dieser Charakte ist im Interval von 1 bis 8 (sowohal 1 als auch 8 sind inbegriffen)
-        // $ ... der String ist aus - Ende vom String
 
         if (!mypattern.matcher(field).matches()) {
             System.out.println("Invalide Eingabe");
@@ -42,7 +47,45 @@ public class UserInterface {
     }
 
     public void moveToken() {
-        String field = readLine();
+        String startField;
+        String goalField;
+
+
+        if(this.game.getPlayer()){
+            System.out.println("Spieler weiß ('O') ist am Zug:");
+        }else{
+            System.out.println("Spieler schwarz ('X') ist am Zug:");
+        }
+
+        System.out.println("Welcher Token soll bewegt werden?");
+        startField = readLine();
+
+        if (!mypattern.matcher(startField).matches()) {
+            System.out.println("Invalide Eingabe");
+            return;
+        }
+
+        if(!this.game.checkIfValidTokenToMove(startField)){
+            System.out.println("Ungültiges Feld zum Bewegen");
+            return;
+        }
+        System.out.println("Wohin soll der Token bewegt werden?");
+        goalField = readLine();
+
+        if (!mypattern.matcher(goalField).matches()) {
+            System.out.println("Invalide Eingabe");
+            return;
+        }
+        if(this.game.moveToken(startField, goalField) == 0){
+            this.game.drawBoard();
+        } else if (this.game.moveToken(startField, goalField) == 3) {
+            System.out.println("Das Zielfeld ist nicht leer. Ungültige Eingabe.");
+        } else if (this.game.moveToken(startField, goalField) == 4) {
+            System.out.println("Das Zielfeld ist zu weit weg. Ungültige Eingabe.");
+        }
+        else{
+            System.out.println("Unable to move the Token");
+        }
     }
 
     public void arethereanyMills() {
