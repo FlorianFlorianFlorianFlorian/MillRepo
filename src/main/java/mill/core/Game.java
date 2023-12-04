@@ -85,6 +85,8 @@ public class Game {
     }
 
     public boolean checkForMills() {
+        //Goal: only be allowed to remove a token, if a mill is newly build.
+
 
         Field[] fieldColor = {Field.WHITE, Field.BLACK};
         for (Field color : fieldColor) {
@@ -207,6 +209,15 @@ public class Game {
         // ACHTUNG: hier muss man Indizes verwenden, also nicht wie bei da Eingabe!
         if(startCircle == goalCircle){
             if(startCircle == outer){
+                // kann man diese Abfragen durch for Schleifen adaptieren?
+                /*
+                for(int i = 0; i < 8; i++){
+                    if(startIndex == i){
+
+                    }
+                }
+                */
+
                 if(startIndex == 0){
                     if(goalIndex == 1){
                         outer[startIndex] = Field.EMPTY;
