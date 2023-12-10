@@ -14,6 +14,12 @@ public class Game {
 
     private Player turn;
     private int PlaceCounter;
+    private int Gamephase;
+    /*
+    Idea: rebuild Gamephase into two Gamephase variables for each player
+    therefore you could implement hopping tokens for one player, but not the other
+    which is necessary ending the game
+     */
 
     public Game() {
         this.inner = new Field[]{Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY, Field.EMPTY};
@@ -22,6 +28,7 @@ public class Game {
 
         this.turn = Player.OOO;
         this.PlaceCounter = 0;
+        this.Gamephase = 1;
     }
 
     public void setGame(Field[] inner, Field[] middle, Field[] outer) {
@@ -37,11 +44,8 @@ public class Game {
     }
 
     public boolean placeToken(String placeToBe) {
-        if (PlaceCounter >= 18) {
+        if(Gamephase != 1){
             return false;
-            // To Do:
-            // Fehlercodes einbauen, um am UserInterface anzeigen zu können was los ist.
-            // derzeit nur eine Fehlerbehandlung => für zu viele Tokens derzeit ungeeignet.
         }
 
         Field token;
@@ -66,6 +70,9 @@ public class Game {
         choosenCircle[index] = token;
         PlaceCounter++;
         switchPlayer();
+        if(PlaceCounter >= 18){
+            Gamephase = 2;
+        }
         return true;
         // java obj sind immer parse by referenz => also übergeben wir einfach die Speicheradresse und somit ist es direkt in inner/middle/outer gespeichert
 
@@ -182,10 +189,14 @@ public class Game {
         // 2 = cannot be moved, opponents Field (not your token)
         // 3 = cannot be moved, goal Field is not empty
         // 4 = cannot be moved, not connected (to far away)
+        // 5 = cannot be moved, not all 9 tokens placed yet
         // 9 = error unknown
 
         // start ist valid
 
+        if (Gamephase != 2){
+            return 5;
+        }
         // Welcher Kreis?
         char[] startLocation = start.toCharArray();
         char[] goalLocation = goal.toCharArray();

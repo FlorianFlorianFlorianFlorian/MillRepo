@@ -48,7 +48,6 @@ public class UserInterface {
         String startField;
         String goalField;
 
-
         if(this.game.getPlayer()){
             System.out.println("Spieler weiß ('O') ist am Zug:");
         }else{
@@ -80,6 +79,8 @@ public class UserInterface {
             System.out.println("Das Zielfeld ist nicht leer. Ungültige Eingabe.");
         } else if (this.game.moveToken(startField, goalField) == 4) {
             System.out.println("Das Zielfeld ist zu weit weg. Ungültige Eingabe.");
+        }else if (this.game.moveToken(startField, goalField) == 5) {
+            System.out.println("Es wurden noch nicht alle Spielsteine gesetzt. Spielsteine verschieben nicht möglich.");
         }
         else{
             System.out.println("Unable to move the Token");
