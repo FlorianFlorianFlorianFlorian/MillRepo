@@ -2,7 +2,7 @@ package mill.core;
 
 
 public class MillController {
-
+    /*
     private Board board;
     private Player currentPlayer;
 
@@ -15,6 +15,9 @@ public class MillController {
         return true;
     }
 
+    public void dostomehting(){
+        //yolo
+    }
     public boolean placeToken(String field) {
         //TODO
         if(!board.getFieldEmpty(field)){
@@ -26,6 +29,5 @@ public class MillController {
 
         return true;
     }
-
-
+    */
 }
