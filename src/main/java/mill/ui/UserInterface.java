@@ -88,8 +88,9 @@ public class UserInterface {
 
     public void arethereanyMills() {
         if (this.game.checkForMills()) {
-            System.out.println("Eine Mühle wurde gebaut!");
-            iliketoremoveremoveit();
+            System.out.println("Eine Mühle wurde gebaut! Hiermit ist diese Spiel-Version beendet. Auf Wiedersehen!");
+            //iliketoremoveremoveit();
+            System.exit(0);
         }
         else {
             System.out.println("keine Mühle erkannt.");
