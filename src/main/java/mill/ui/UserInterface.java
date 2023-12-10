@@ -88,7 +88,15 @@ public class UserInterface {
 
     public void arethereanyMills() {
         if (this.game.checkForMills()) {
-            System.out.println("Eine Mühle wurde gebaut! Hiermit ist diese Spiel-Version beendet. Auf Wiedersehen!");
+            System.out.println("Eine Mühle wurde gebaut!");
+            boolean player = this.game.getPlayer();
+            if(player){
+                System.out.println("Spieler schwarz ('X') hat gewonnen.");
+            }else{
+                System.out.println("Spieler weiß ('0') hat gewonnen.");
+            }
+            System.out.println("Herzlichen Glückwunsch!!");
+            System.out.println("Auf Wiedersehen.");
             //iliketoremoveremoveit();
             System.exit(0);
         }
